@@ -1,0 +1,13 @@
+{
+  "name": "opencart_web_api_fw",
+  "version": "1.0.0",
+  "description": "Open Cart Testing Framework",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.0"
+  }
+}
