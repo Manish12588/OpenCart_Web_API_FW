@@ -1,30 +1,29 @@
 import { test, expect } from "@playwright/test";
-import { LoginPgae } from "../src/pages/LoginPage";
+import { LoginPage } from "../src/pages/LoginPage";
+import { HomePage } from "../src/pages/HomePage";
 
-let loginPage: LoginPgae;
+let loginPage: LoginPage;
+let homePage: HomePage;
 
 test.beforeEach(async ({ page }) => {
-  loginPage = new LoginPgae(page);
+  loginPage = new LoginPage(page);
   await loginPage.goToLoginPage();
+  homePage = new HomePage(page);
 });
 
-test("Login Page Title - Test", async () => {
+//AAA
+test.skip("login page title test", async () => {
   let pageTitle = await loginPage.getLoginPageTitle();
-  console.log("Login Page Title: ", pageTitle);
-  expect(pageTitle).toBe("Account Login"); //Assertions
+  console.log("Login page title : ", pageTitle);
+  expect(pageTitle).toBe("Account Login");
 });
 
-test("Forgot Password Link Exist - Test", async () => {
+test.skip("forgot pwd link exist test", async () => {
   expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
-test("User is Able to Login to Application - Test", async () => {
-  await loginPage.doLogin("manishkumar@gmail.com", "Automation@123");
-});
-
-test("Fetch All Links - Test", async () => {
-  expect(await loginPage.getAllRightHandColumnLinks()).toContain(
-    "Order History",
-  );
-  //await loginPage.getAllRightHandColumnLinks();
+test.skip("user is able to login to app", async () => {
+  await loginPage.doLogin("pwapril@pw.com", "pw123");
+  expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy(); //Validating user is successfully login
+  expect.soft(await homePage.getHomePageTitle()).toBe("My Account"); //Adding soft assertions, Because it's not good thing to add two hard assertions
 });

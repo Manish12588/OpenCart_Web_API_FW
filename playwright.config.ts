@@ -1,4 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+
+//Install the dotenv package which helps me to provide the environment varibale
+//ENV=qa npx playwright test (Pick environment variable value during running test case, variable name =ENV)
+const ENV = process.env.ENV || "qa"; //If no environment provided it will run qa enviromnment by default
+console.log("Running Tests on Environment: ", ENV);
+dotenv.config({ path: `config/.env.${ENV}` });
 
 export default defineConfig({
   testDir: "./tests",
@@ -14,7 +21,7 @@ export default defineConfig({
   reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: "https://naveenautomationlabs.com/",
+    baseURL: process.env.BASE_URL,
     headless: false,
     trace: "on-first-retry",
   },
@@ -26,15 +33,15 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
 
-    // {
-    //   name: "firefox",
-    //   use: { ...devices["Desktop Firefox"] },
-    // },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    },
 
-    // {
-    //   name: "webkit",
-    //   use: { ...devices["Desktop Safari"] },
-    // },
+    {
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
+    },
 
     /* Test against mobile viewports. */
     // {
