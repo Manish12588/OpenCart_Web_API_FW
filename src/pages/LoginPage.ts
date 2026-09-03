@@ -8,6 +8,7 @@ export class LoginPage extends BasePage {
   private readonly loginBtn: Locator;
   private readonly forgottenPasswordLink: Locator;
   private readonly loginErrorMessage: Locator;
+  private readonly registerLink;
 
   //2. constructor of the page class: init the locators:
   constructor(page: Page) {
@@ -21,6 +22,7 @@ export class LoginPage extends BasePage {
     this.loginErrorMessage = page.locator(
       ".alert.alert-danger.alert-dismissible",
     );
+    this.registerLink = page.getByRole("link", { name: "Register" });
   }
 
   //3. public page actions(methods) / behaviour: Encapsulation
@@ -45,5 +47,9 @@ export class LoginPage extends BasePage {
 
   async isInvalidLoginErrorDisplayed(): Promise<boolean> {
     return await this.loginErrorMessage.isVisible();
+  }
+
+  async navigateToRegisterPage() {
+    await this.registerLink.click();
   }
 }

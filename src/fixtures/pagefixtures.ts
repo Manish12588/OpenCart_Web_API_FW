@@ -5,11 +5,15 @@ import { test as baseTest } from "@playwright/test";
 import { BasePage } from "../pages/BasePage";
 import { LoginPage } from "../pages/LoginPage";
 import { HomePage } from "../pages/HomePage";
+import { RegisterPage } from "../pages/RegisterPage";
+import { AccountPage } from "../pages/AccountPage";
 
 type pageFixtures = {
   basePage: BasePage;
   loginPage: LoginPage;
   homePage: HomePage;
+  registerPage: RegisterPage;
+  accountPage: AccountPage;
 };
 
 //Extends the playwright test
@@ -31,6 +35,15 @@ export let test = baseTest.extend<pageFixtures>({
     let homePage = new HomePage(page);
     use(homePage);
   },
+
+  registerPage: async ({ page }, use) => {
+    let registerPage = new RegisterPage(page);
+    use(registerPage);
+  },
+  accountPage: async ({ page }, use) => {
+    let accountPage = new AccountPage(page);
+    use(accountPage);
+  },
 });
 
-export { expect } from "@playwright/test"; //Advantange of to add this expect it will work with my fixures as well  
+export { expect } from "@playwright/test"; //Advantange of to add this expect it will work with my fixures as well
