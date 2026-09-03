@@ -18,7 +18,7 @@ test("User is Able to Login to Application - Test", async ({
   loginPage,
   homePage,
 }) => {
-  await loginPage.doLogin(process.env.APP_USERNAME, process.env.APP_PASSWORD);
+  await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
   expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy(); //Validating user is successfully login
   expect.soft(await homePage.getHomePageTitle()).toBe("My Account"); //Adding soft assertions, Because it's not good thing to add two hard assertions
 });

@@ -2,7 +2,7 @@ import { test, expect } from "../src/fixtures/pagefixtures"; //Importing my own 
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
-  await loginPage.doLogin(process.env.APP_USERNAME, process.env.APP_PASSWORD);
+  await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
 });
 
 test("Validate HomePage Title - Test", async ({ homePage }) => {
