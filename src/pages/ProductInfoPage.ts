@@ -7,7 +7,11 @@ export class ProductInfoPage extends BasePage {
   private readonly productImages: Locator;
   private readonly productMetadata: Locator;
   private readonly productPriceData: Locator;
-  private productInfoMap: Map<string, string | number>;
+  private readonly productInfoMap: Map<string, string | number>;
+  private readonly productQuantity: Locator;
+  private readonly addToCartButton: Locator;
+  private readonly addToCartSuccessMeaage: Locator;
+  private readonly shoppingCart: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -20,6 +24,13 @@ export class ProductInfoPage extends BasePage {
       "div#content ul.list-unstyled:nth-of-type(2) li",
     );
     this.productInfoMap = new Map<string, string | number>();
+    this.productQuantity = page.getByRole("textbox", { name: "Qty" });
+    this.addToCartButton = page.getByRole("button", {
+      name: "Add to Cart",
+      exact: true,
+    });
+    this.addToCartSuccessMeaage = page.locator("div#product-product div.alert");
+    this.shoppingCart = page.locator("a[title='Shopping Cart']");
   }
 
   async getProductHeader(): Promise<string> {
@@ -40,6 +51,22 @@ export class ProductInfoPage extends BasePage {
     await this.getProductMetaData();
     await this.getProductPriceData();
     return this.productInfoMap;
+  }
+
+  async addProductToCart(quantitiy: string): Promise<void> {
+    await this.productQuantity.clear();
+    await this.productQuantity.fill(quantitiy);
+    await this.addToCartButton.click();
+  }
+
+  async getAddToCartSucessMessage(): Promise<string> {
+    await this.addToCartSuccessMeaage.waitFor({ state: "visible" });
+    return await this.addToCartSuccessMeaage.innerText();
+  }
+
+  async goToShopingCart(): Promise<void> {
+    await this.shoppingCart.waitFor({ state: "visible" });
+    await this.shoppingCart.click();
   }
 
   private async getProductMetaData(): Promise<void> {

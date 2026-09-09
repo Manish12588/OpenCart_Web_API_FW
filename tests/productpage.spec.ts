@@ -46,3 +46,19 @@ test("Verify the product Information", async ({
   expect.soft(actualProductInfoMap.get("productprice")).toBe("$2,000.00");
   expect.soft(actualProductInfoMap.get("extaxprice")).toBe("$2,000.00");
 });
+
+test("Select the quantity and add product to cart - Test", async ({
+  homePage,
+  searchResultPage,
+  productInfoPage,
+}) => {
+  await homePage.doSearch("macbook");
+  await searchResultPage.selectProduct("MacBook Pro");
+  await productInfoPage.addProductToCart("20");
+
+  let actualAddToCartSuccessMessage =
+    await productInfoPage.getAddToCartSucessMessage();
+  console.log("Success Message: ", actualAddToCartSuccessMessage);
+});
+
+test("Validate the shopping cart - Test", () => {});

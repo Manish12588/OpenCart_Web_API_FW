@@ -9,6 +9,7 @@ import { RegisterPage } from "../pages/RegisterPage";
 import { AccountPage } from "../pages/AccountPage";
 import { SearchResultPage } from "../pages/SearchResultPage";
 import { ProductInfoPage } from "../pages/ProductInfoPage";
+import { CartPage } from "../pages/CartPage";
 
 type pageFixtures = {
   basePage: BasePage;
@@ -18,6 +19,7 @@ type pageFixtures = {
   accountPage: AccountPage;
   searchResultPage: SearchResultPage;
   productInfoPage: ProductInfoPage;
+  cartPage: CartPage;
 };
 
 //Extends the playwright test
@@ -55,6 +57,10 @@ export let test = baseTest.extend<pageFixtures>({
   productInfoPage: async ({ page }, use) => {
     let productInfoPage = new ProductInfoPage(page);
     use(productInfoPage);
+  },
+  cartPage: async ({ page }, use) => {
+    let cartPage = new CartPage(page);
+    use(cartPage);
   },
 });
 
