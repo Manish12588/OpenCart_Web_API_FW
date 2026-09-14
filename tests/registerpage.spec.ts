@@ -1,17 +1,18 @@
 import { test, expect } from "../src/fixtures/pagefixtures";
+import { CsvHelper } from "../src/utils/CsvHelper";
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
   await loginPage.navigateToRegisterPage();
 });
 
-test("Validate the Register Page title - Test", async ({
-  loginPage,
-  registerPage,
-}) => {
+
+
+test("Validate the Register Page title - Test", async ({ registerPage }) => {
   expect(await registerPage.getRegisterPageTitle()).toBe("Register Account");
 });
 
+//Register user by providing the hard code data in test
 test("Register Account - Test", async ({
   loginPage,
   registerPage,
@@ -22,7 +23,7 @@ test("Register Account - Test", async ({
   await registerPage.doRegisterAccount(
     "Manish",
     "Kumar",
-    `Manish${timestamp}@gmail.com`,
+    `Manish_${timestamp}@gmail.com`,
     "0123456789",
     "Assignment@123",
     "Yes",
@@ -32,3 +33,4 @@ test("Register Account - Test", async ({
   await accountPage.doClickContinue();
   await accountPage.doLogout();
 });
+

@@ -1,12 +1,16 @@
 //Importing my own fixtures which we gave created (custom + inbuilt) fixture
 import { test, expect } from "../src/fixtures/pagefixtures";
+import { CsvHelper } from "../src/utils/CsvHelper";
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
   await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
 });
 
-test("Verify search - Test", async ({ homePage, searchResultPage }) => {
+test("Verify search results count - Test", async ({
+  homePage,
+  searchResultPage,
+}) => {
   await homePage.doSearch("macbook");
   let resultCount = await searchResultPage.getProductSearchResultsCount();
   console.log("Search Result Count: ", resultCount);

@@ -61,6 +61,11 @@ export class RegisterPage extends BasePage {
     await this.continueButton.click();
   }
 
+  async toSubscription(value: string): Promise<"Yes" | "No"> {
+    if (value === "Yes" || value === "No") return value;
+    throw new Error(`Invalid subscription value "${value}"}`);
+  }
+
   async getTimeStamp(): Promise<string> {
     return Date.now().toString();
   }

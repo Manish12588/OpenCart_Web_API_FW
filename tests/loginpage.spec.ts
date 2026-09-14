@@ -1,4 +1,7 @@
 import { test, expect } from "../src/fixtures/pagefixtures"; //Importing my own fixtures which we gave created (custom + inbuilt) fixture
+import { CsvHelper } from "../src/utils/CsvHelper";
+import { ExcelHelper } from "../src/utils/ExcelHelper";
+import { JsonHelper } from "../src/utils/JsonHelper";
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
@@ -14,7 +17,7 @@ test("Forgot Password Link Exist - Test", async ({ loginPage }) => {
   expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
-test("User is Able to Login to Application - Test", async ({
+test("User is Able to Login to Application with valid credentials - Test", async ({
   loginPage,
   homePage,
 }) => {
@@ -22,3 +25,47 @@ test("User is Able to Login to Application - Test", async ({
   expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy(); //Validating user is successfully login
   expect.soft(await homePage.getHomePageTitle()).toBe("My Account"); //Adding soft assertions, Because it's not good thing to add two hard assertions
 });
+
+//DD_1: Read the CSV data directly from the CSV file aand loop the test method row wise..
+let testData = CsvHelper.readCsv("src/testdata/logindata_negative.csv");
+for (let row of testData) {
+  test(`User Login to Application with invalid credentials : ${row.username} - ${"*".repeat(row.password.length)}`, async ({
+    loginPage,
+  }) => {
+    await loginPage.doLogin(row.username, row.password);
+    expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
+  });
+}
+
+//cons:
+//1. maintenance
+//2. MS Licenses
+//DD_2: read xlsx data directly fromn the excel file and loop the test method row wise...
+//NOTE: I am Skipping this because of excel licensed issue
+let testExcelData = ExcelHelper.readExcel(
+  "src/testdata/opencartdata.xlsx",
+  "login",
+);
+for (let row of testExcelData) {
+  test.skip(`login to app with invalid credentials with Excel Data- ${row.username} - ${row.password}`, async ({
+    loginPage,
+    homePage,
+  }) => {
+    await loginPage.doLogin(row.username, row.password);
+    expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
+  });
+}
+
+//Pros:
+//1. inbuilt method: parse, lightweight, smaller data source
+//DD_3: read JSON data directly fromn the JSON file and loop the test method row wise...
+let testJSONData = JsonHelper.readJson("src/testdata/logindata.json");
+for (let row of testJSONData) {
+  test(`login to app with invalid credentials with JSON Data- ${row.username} - ${"*".repeat(row.password.length)}`, async ({
+    loginPage,
+    homePage,
+  }) => {
+    await loginPage.doLogin(row.username, row.password);
+    expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
+  });
+}

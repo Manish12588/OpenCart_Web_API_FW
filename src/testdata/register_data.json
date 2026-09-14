@@ -1,0 +1,10 @@
+[
+    {
+        "firstName": "Manish",
+        "lastName": "Kumar",
+        "phoneNo":"01234567890",
+        "password":"Automation@123",
+        "subscription":"Yes",
+        "successMessage":"Your Account Has Been Created!"
+    }
+]

@@ -24,6 +24,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL,
     headless: false,
     trace: "on-first-retry",
+    screenshot: "only-on-failure",
   },
 
   /* Configure projects for major browsers */
