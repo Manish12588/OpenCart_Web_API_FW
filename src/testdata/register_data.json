@@ -1,7 +1,7 @@
 [
     {
-        "firstName": "Manish",
-        "lastName": "Kumar",
+        "firstname": "Manish",
+        "lastname": "Kumar",
         "phoneNo":"01234567890",
         "password":"Automation@123",
         "subscription":"Yes",

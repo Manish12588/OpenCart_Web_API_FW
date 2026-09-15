@@ -10,7 +10,7 @@ test.beforeEach(async ({ loginPage }) => {
 let registerData = JsonHelper.readJson("src/testdata/register_data.json");
 
 for (let row of registerData) {
-  test(`Register the user with JSON Data- ${row.firstName} - ${row.lastName}`, async ({
+  test(`Register the user with JSON Data- ${row.firstname} - ${row.lastname}`, async ({
     accountPage,
     registerPage,
   }) => {
@@ -18,9 +18,9 @@ for (let row of registerData) {
     console.log("Generated Timestamp For Email: ", timestamp);
 
     await registerPage.doRegisterAccount(
-      row.firstName,
-      row.lastName,
-      `${row.firstName}_${timestamp}@gmail.com`,
+      row.firstname,
+      row.lastname,
+      `${row.firstname}_${timestamp}@gmail.com`,
       row.phoneNo,
       row.password,
       await registerPage.toSubscription(row.subscription),
