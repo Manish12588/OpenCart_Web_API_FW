@@ -29,9 +29,16 @@ export class ApiHelper {
       data: data,
     });
 
+    const status = response.status();
+    const rawText = await response.text();
+
+    if (status < 200 || status >= 300) {
+      console.log(`POST ${endPoint} failed — status ${status}`);
+      console.log(`Response body: ${rawText.slice(0, 500)}`);
+    }
     return {
-      status: response.status(),
-      body: await response.json(),
+      status,
+      body: rawText ? JSON.parse(rawText) : null,
     };
   }
 
