@@ -5,7 +5,9 @@ let TOKEN: string;
 
 test.describe.serial("Restful Booker -Test ", () => {
   test("GET - Getting All booking Ids", async ({ apiHelper }) => {
-    let response = await apiHelper.get("/booking");
+    let response = await apiHelper.get(
+      `${process.env.BOOKER_API_BASE_URL}/booking`,
+    );
     console.log("Response: ", response.body);
     expect(response.status).toBe(200);
   });
@@ -23,7 +25,13 @@ test.describe.serial("Restful Booker -Test ", () => {
       },
       additionalneeds: "Breakfast",
     };
-    let response = await apiHelper.post("/booking", userData);
+    let response = await apiHelper.post(
+      `${process.env.BOOKER_API_BASE_URL}/booking`,
+      {
+        type: "json",
+        data: userData,
+      },
+    );
     console.log("Response: ", response.body);
     expect(response.status).toBe(200);
 
@@ -35,7 +43,9 @@ test.describe.serial("Restful Booker -Test ", () => {
   test("GET - Getting user details for specific booking Id", async ({
     apiHelper,
   }) => {
-    let response = await apiHelper.get(`/booking/${bookingId}`);
+    let response = await apiHelper.get(
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+    );
     console.log("Response: ", response.body);
 
     expect(response.status).toBe(200);
@@ -46,7 +56,13 @@ test.describe.serial("Restful Booker -Test ", () => {
     apiHelper,
   }) => {
     let authPayload = { username: "admin", password: "password123" };
-    let response = await apiHelper.post(`/auth`, authPayload);
+    let response = await apiHelper.post(
+      `${process.env.BOOKER_API_BASE_URL}/auth`,
+      {
+        type: "json",
+        data: authPayload,
+      },
+    );
     expect(response.status).toBe(200);
     TOKEN = response.body.token;
     console.log("Generated Token: ", TOKEN);
@@ -69,8 +85,8 @@ test.describe.serial("Restful Booker -Test ", () => {
       Cookie: `token=${TOKEN}`,
     };
     let response = await apiHelper.put(
-      `/booking/${bookingId}`,
-      userData,
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+      { type: "json", data: userData },
       AUTH_HEADER,
     );
     expect(response.status).toBe(200);
@@ -81,7 +97,9 @@ test.describe.serial("Restful Booker -Test ", () => {
   test("GET - Getting user details after Updating specific booking details", async ({
     apiHelper,
   }) => {
-    let response = await apiHelper.get(`/booking/${bookingId}`);
+    let response = await apiHelper.get(
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+    );
     console.log("Response: ", response.body);
 
     expect(response.status).toBe(200);
@@ -97,8 +115,8 @@ test.describe.serial("Restful Booker -Test ", () => {
       Cookie: `token=${TOKEN}`,
     };
     let response = await apiHelper.patch(
-      `/booking/${bookingId}`,
-      userData,
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+      { type: "json", data: userData },
       AUTH_HEADER,
     );
     expect(response.status).toBe(200);
@@ -109,7 +127,9 @@ test.describe.serial("Restful Booker -Test ", () => {
   test("GET - Getting user details after partial update booking details", async ({
     apiHelper,
   }) => {
-    let response = await apiHelper.get(`/booking/${bookingId}`);
+    let response = await apiHelper.get(
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+    );
     console.log("Response: ", response.body);
 
     expect(response.status).toBe(200);
@@ -121,7 +141,10 @@ test.describe.serial("Restful Booker -Test ", () => {
     let AUTH_HEADER = {
       Cookie: `token=${TOKEN}`,
     };
-    let response = await apiHelper.delete(`/booking/${bookingId}`, AUTH_HEADER);
+    let response = await apiHelper.delete(
+      `${process.env.BOOKER_API_BASE_URL}/booking/${bookingId}`,
+      AUTH_HEADER,
+    );
     expect(response.status).toBe(201);
   });
 });

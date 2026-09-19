@@ -1,5 +1,10 @@
 import { APIRequestContext } from "@playwright/test";
 
+//Added a type for Payload
+type PostPayload =
+  | { type: "json"; data: object }
+  | { type: "form"; form: Record<string, string> };
+
 export class ApiHelper {
   private readonly request: APIRequestContext;
   private readonly baseURL: string;
@@ -9,72 +14,92 @@ export class ApiHelper {
     this.baseURL = baseURL;
   }
 
-  //Helper Methods:
-  //GET with Headers
-  async get(endPoint: string, headers?: Record<string, string>) {
-    let response = await this.request.get(`${this.baseURL}${endPoint}`, {
-      headers: headers,
-    });
-
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
-  }
-
-  //POST
-  async post(endPoint: string, data: object, headers?: Record<string, string>) {
-    let response = await this.request.post(`${this.baseURL}${endPoint}`, {
-      headers: headers,
-      data: data,
-    });
-
+  private async parseJsonResponse(
+    response: any,
+    method: string,
+    endPoint: string,
+  ) {
     const status = response.status();
     const rawText = await response.text();
 
-    if (status < 200 || status >= 300) {
-      console.log(`POST ${endPoint} failed — status ${status}`);
-      console.log(`Response body: ${rawText.slice(0, 500)}`);
+    let body: any = null;
+    if (rawText) {
+      try {
+        body = JSON.parse(rawText);
+      } catch {
+        throw new Error(
+          `${method} ${endPoint} returned non-JSON response (status ${status}):\n${rawText.slice(0, 500)}`,
+        );
+      }
     }
-    return {
-      status,
-      body: rawText ? JSON.parse(rawText) : null,
-    };
+    return { status, body };
   }
 
-  //PUT
-  async put(endPoint: string, data: object, headers?: Record<string, string>) {
-    let response = await this.request.put(`${this.baseURL}${endPoint}`, {
+  private buildUrl(endPoint: string): string {
+    return /^https?:\/\//i.test(endPoint)
+      ? endPoint
+      : `${this.baseURL}${endPoint}`;
+  }
+
+  //Helper Methods:
+  //GET with Headers
+  async get(endPoint: string, headers?: Record<string, string>) {
+    let response = await this.request.get(this.buildUrl(endPoint), {
       headers: headers,
-      data: data,
     });
-
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
+    return this.parseJsonResponse(response, "GET", endPoint);
   }
 
-  //PUT
-  async patch(
+  //POST:
+  async post(
     endPoint: string,
-    data: object,
+    payload: PostPayload,
     headers?: Record<string, string>,
   ) {
-    let response = await this.request.patch(`${this.baseURL}${endPoint}`, {
+    console.log("endpoint: ", this.buildUrl(endPoint));
+    let response = await this.request.post(this.buildUrl(endPoint), {
       headers: headers,
-      data: data,
+      //...(condition ? objA : objB)
+      ...(payload.type === "form"
+        ? { form: payload.form }
+        : { data: payload.data }),
     });
+    return this.parseJsonResponse(response, "POST", endPoint);
+  }
 
-    return {
-      status: response.status(),
-      body: await response.json(),
-    };
+  //PUT
+  async put(
+    endPoint: string,
+    payload: PostPayload,
+    headers?: Record<string, string>,
+  ) {
+    let response = await this.request.put(this.buildUrl(endPoint), {
+      headers: headers,
+      ...(payload.type === "form"
+        ? { form: payload.form }
+        : { data: payload.data }),
+    });
+    return this.parseJsonResponse(response, "PUT", endPoint);
+  }
+
+  //PATCH
+  async patch(
+    endPoint: string,
+    payload: PostPayload,
+    headers?: Record<string, string>,
+  ) {
+    let response = await this.request.patch(this.buildUrl(endPoint), {
+      headers: headers,
+      ...(payload.type === "form"
+        ? { form: payload.form }
+        : { data: payload.data }),
+    });
+    return this.parseJsonResponse(response, "PATCH", endPoint);
   }
 
   //DELETE
   async delete(endPoint: string, headers?: Record<string, string>) {
-    let response = await this.request.delete(`${this.baseURL}${endPoint}`, {
+    let response = await this.request.delete(this.buildUrl(endPoint), {
       headers: headers,
     });
 
