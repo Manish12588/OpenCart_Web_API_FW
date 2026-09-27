@@ -56,7 +56,6 @@ export class ApiHelper {
     payload: PostPayload,
     headers?: Record<string, string>,
   ) {
-    console.log("endpoint: ", this.buildUrl(endPoint));
     let response = await this.request.post(this.buildUrl(endPoint), {
       headers: headers,
       //...(condition ? objA : objB)
@@ -99,6 +98,7 @@ export class ApiHelper {
 
   //DELETE
   async delete(endPoint: string, headers?: Record<string, string>) {
+    console.log(this.buildUrl(endPoint));
     let response = await this.request.delete(this.buildUrl(endPoint), {
       headers: headers,
     });

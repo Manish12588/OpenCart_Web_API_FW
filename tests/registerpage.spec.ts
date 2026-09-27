@@ -6,8 +6,6 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.navigateToRegisterPage();
 });
 
-
-
 test("Validate the Register Page title - Test", async ({ registerPage }) => {
   expect(await registerPage.getRegisterPageTitle()).toBe("Register Account");
 });
@@ -34,3 +32,19 @@ test("Register Account - Test", async ({
   await accountPage.doLogout();
 });
 
+// Common features test
+test("Company Logo visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isLogoVisible()).toBeTruthy();
+});
+
+test("Search Box visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isSerachBoxVisible()).toBeTruthy();
+});
+
+test("Cart button visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isCartButtonVisible()).toBeTruthy();
+});
+
+test("Footers links visible on Login page", async ({ basePage }) => {
+  expect(await basePage.getPageFootersCount()).toBe(16);
+});

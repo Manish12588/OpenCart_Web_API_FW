@@ -42,3 +42,13 @@ coverage/
 # Allure (if used)
 allure-results/
 allure-report/
+
+#environment related files
+config/.env.*
+
+#reporting lab history
+reporting-labs.history.json
+
+#Allure report setup document
+allure-report-setup.txt
+reporting-lab-setup.txt
