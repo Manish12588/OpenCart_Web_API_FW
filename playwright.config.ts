@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
+import reportingLabs from "./reporting-labs.config";
 
 //Install the dotenv package which helps me to provide the environment varibale
 //ENV=qa npx playwright test (Pick environment variable value during running test case, variable name =ENV)
@@ -22,6 +23,7 @@ export default defineConfig({
     ["list"],
     ["html", { outputFolder: "reports/html-report", open: "never" }],
     ["allure-playwright", { outputFolder: "allure-results", suiteTitle: true }],
+    ["reporting-labs", reportingLabs],
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

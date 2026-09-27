@@ -4,18 +4,39 @@ import { CsvHelper } from "../src/utils/CsvHelper";
 import { ExcelHelper } from "../src/utils/ExcelHelper";
 import { JsonHelper } from "../src/utils/JsonHelper";
 import * as allure from "allure-js-commons";
+import { log, meta, testData } from "reporting-labs";
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
 });
 
 test("Login Page Title - Test", async ({ loginPage }) => {
+  //reporting lab
+  meta({
+    priority: "P2",
+    severity: "minor",
+    owner: "Manish",
+    story: "JIRA-01",
+    epic: "EPIC-100",
+    feature: "FEATURE-01",
+  });
+
   let pageTitle = await loginPage.getPageTitle();
   console.log("Login Page Title: ", pageTitle);
+  await log("Login Page Title: ", pageTitle); //log() functions from reporting lab
+
   expect(pageTitle).toBe("Account Login"); //Assertions
 });
 
 test("Forgot Password Link Exist - Test", async ({ loginPage }) => {
+  meta({
+    priority: "P2",
+    severity: "minor",
+    owner: "Manish",
+    story: "JIRA-02",
+    epic: "EPIC-100",
+    feature: "FEATURE-02",
+  });
   expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
@@ -23,6 +44,21 @@ test("User is Able to Login to Application with valid credentials - Test", async
   loginPage,
   homePage,
 }) => {
+  await testData(
+    {
+      username: process.env.APP_USERNAME!,
+      password: process.env.APP_PASSWORD!,
+    },
+    "Login",
+  );
+  meta({
+    priority: "P1",
+    severity: "blocker",
+    owner: "Manish",
+    story: "JIRA-03",
+    epic: "EPIC-100",
+    feature: "FEATURE-03",
+  });
   await allure.suite("Login Tests");
   await allure.severity("critical");
   await allure.feature("Authentication");
@@ -35,11 +71,20 @@ test("User is Able to Login to Application with valid credentials - Test", async
 });
 
 //DD_1: Read the CSV data directly from the CSV file aand loop the test method row wise..
-let testData = CsvHelper.readCsv("src/testdata/logindata_negative.csv");
-for (let row of testData) {
+let testCsvData = CsvHelper.readCsv("src/testdata/logindata_negative.csv");
+for (let row of testCsvData) {
   test(`User Login to Application with invalid credentials : ${row.username} - ${"*".repeat(row.password.length)}`, async ({
     loginPage,
   }) => {
+    meta({
+      priority: "P2",
+      severity: "major",
+      owner: "Manish",
+      story: "JIRA-04",
+      epic: "EPIC-100",
+      feature: "FEATURE-04",
+    });
+    await testData(testCsvData, "Invalid Login Data");
     await loginPage.doLogin(row.username, row.password);
     expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
   });
