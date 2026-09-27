@@ -1,14 +1,16 @@
+import { base } from "@faker-js/faker";
 import { test, expect } from "../src/fixtures/pagefixtures"; //Importing my own fixtures which we gave created (custom + inbuilt) fixture
 import { CsvHelper } from "../src/utils/CsvHelper";
 import { ExcelHelper } from "../src/utils/ExcelHelper";
 import { JsonHelper } from "../src/utils/JsonHelper";
+import * as allure from "allure-js-commons";
 
 test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
 });
 
 test("Login Page Title - Test", async ({ loginPage }) => {
-  let pageTitle = await loginPage.getLoginPageTitle();
+  let pageTitle = await loginPage.getPageTitle();
   console.log("Login Page Title: ", pageTitle);
   expect(pageTitle).toBe("Account Login"); //Assertions
 });
@@ -21,6 +23,12 @@ test("User is Able to Login to Application with valid credentials - Test", async
   loginPage,
   homePage,
 }) => {
+  await allure.suite("Login Tests");
+  await allure.severity("critical");
+  await allure.feature("Authentication");
+  await allure.story("Valid Login");
+  await allure.description("Verify user can login with valid credentials");
+
   await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
   expect.soft(await homePage.isLogoutLinkExist()).toBeTruthy(); //Validating user is successfully login
   expect.soft(await homePage.getHomePageTitle()).toBe("My Account"); //Adding soft assertions, Because it's not good thing to add two hard assertions
@@ -69,3 +77,20 @@ for (let row of testJSONData) {
     expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
   });
 }
+
+// Common features test
+test("Company Logo visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isLogoVisible()).toBeTruthy();
+});
+
+test("Search Box visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isSerachBoxVisible()).toBeTruthy();
+});
+
+test("Cart button visible on Login page", async ({ basePage }) => {
+  expect(await basePage.isCartButtonVisible()).toBeTruthy();
+});
+
+test("Footers links visible on Login page", async ({ basePage }) => {
+  expect(await basePage.getPageFootersCount()).toBe(16);
+});
