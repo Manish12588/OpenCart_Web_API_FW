@@ -12,6 +12,7 @@ package-lock.json.bak
 /blob-report/
 /playwright/.auth/
 .last-run.json
+/reports/html-report
 
 # Env
 .env
@@ -45,10 +46,13 @@ allure-report/
 
 #environment related files
 config/.env.*
+!config/.env.example
 
 #reporting lab history
 reporting-labs.history.json
+reporting-labs/
 
 #Allure report setup document
 allure-report-setup.txt
 reporting-lab-setup.txt
+
