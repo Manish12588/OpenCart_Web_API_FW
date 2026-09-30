@@ -14,7 +14,9 @@ test("Logout Link Exist on HomePage - Test", async ({ homePage }) => {
   expect(await homePage.isLogoutLinkExist()).toBeTruthy();
 });
 
-test("Validate the Headers exist on HomePage - Test", async ({ homePage }) => {
+test("@Sanity Validate the Headers exist on HomePage - Test", async ({
+  homePage,
+}) => {
   let allHeaders = await homePage.getHomePageHeaders();
   console.log("All Headers: ", allHeaders);
   expect.soft(allHeaders).toHaveLength(4); //Validating the length of all headers

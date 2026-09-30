@@ -7,7 +7,7 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
 });
 
-test("Verify search results count - Test", async ({
+test("@Smoke Verify search results count - Test", async ({
   homePage,
   searchResultPage,
 }) => {
@@ -17,7 +17,7 @@ test("Verify search results count - Test", async ({
   expect(resultCount).toBe(3);
 });
 
-test("Verify user is able to select the product - Test", async ({
+test("@Regression Verify user is able to select the product - Test", async ({
   homePage,
   searchResultPage,
   page,

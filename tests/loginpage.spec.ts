@@ -10,7 +10,9 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.goToLoginPage();
 });
 
-test("Login Page Title - Test", async ({ loginPage }) => {
+test("@Smoke @Regression @ Sanity Login Page Title - Test", async ({
+  loginPage,
+}) => {
   //reporting lab
   meta({
     priority: "P2",
@@ -40,7 +42,7 @@ test("Forgot Password Link Exist - Test", async ({ loginPage }) => {
   expect(await loginPage.isForgottenPwdLinkExist()).toBeTruthy();
 });
 
-test("User is Able to Login to Application with valid credentials - Test", async ({
+test("@Smoke @Regression @ Sanity User is Able to Login to Application with valid credentials - Test", async ({
   loginPage,
   homePage,
 }) => {
@@ -114,7 +116,7 @@ for (let row of testExcelData) {
 //DD_3: read JSON data directly fromn the JSON file and loop the test method row wise...
 let testJSONData = JsonHelper.readJson("src/testdata/logindata.json");
 for (let row of testJSONData) {
-  test(`login to app with invalid credentials with JSON Data- ${row.username} - ${"*".repeat(row.password.length)}`, async ({
+  test(`@Smoke @Regression @ Sanity login to app with invalid credentials with JSON Data- ${row.username} - ${"*".repeat(row.password.length)}`, async ({
     loginPage,
     homePage,
   }) => {
@@ -124,18 +126,18 @@ for (let row of testJSONData) {
 }
 
 // Common features test
-test("Company Logo visible on Login page", async ({ basePage }) => {
+test("@Smoke Company Logo visible on Login page", async ({ basePage }) => {
   expect(await basePage.isLogoVisible()).toBeTruthy();
 });
 
-test("Search Box visible on Login page", async ({ basePage }) => {
+test("@Smoke Search Box visible on Login page", async ({ basePage }) => {
   expect(await basePage.isSerachBoxVisible()).toBeTruthy();
 });
 
-test("Cart button visible on Login page", async ({ basePage }) => {
+test("@Smoke Cart button visible on Login page", async ({ basePage }) => {
   expect(await basePage.isCartButtonVisible()).toBeTruthy();
 });
 
-test("Footers links visible on Login page", async ({ basePage }) => {
+test("@Smoke Footers links visible on Login page", async ({ basePage }) => {
   expect(await basePage.getPageFootersCount()).toBe(16);
 });
