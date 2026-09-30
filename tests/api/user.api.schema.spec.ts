@@ -60,7 +60,7 @@ test("get a user - schema test", async ({ apiHelper }) => {
 
   let response = await apiHelper.post(
     "/public/v2/users",
-    userData,
+    { type: "json", data: userData },
     AUTH_HEADER,
   );
   expect(response.status).toBe(201);

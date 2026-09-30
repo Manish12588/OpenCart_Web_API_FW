@@ -10,6 +10,7 @@ export class ApiHelper {
   private readonly baseURL: string;
 
   constructor(request: APIRequestContext, baseURL: string) {
+    console.log("baseURL received:", baseURL);
     this.request = request;
     this.baseURL = baseURL;
   }
@@ -36,9 +37,12 @@ export class ApiHelper {
   }
 
   private buildUrl(endPoint: string): string {
-    return /^https?:\/\//i.test(endPoint)
+    const url = /^https?:\/\//i.test(endPoint)
       ? endPoint
       : `${this.baseURL}${endPoint}`;
+
+    console.log(`Resolved URL: ${url}`);
+    return url;
   }
 
   //Helper Methods:

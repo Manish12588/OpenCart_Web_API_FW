@@ -15,7 +15,6 @@ test.describe.serial("Running e2e fo rest crud api tests", () => {
     expect(response.status).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
   });
-  
 
   //POST
   test("POST API - Create a User", async ({ apiHelper }) => {
@@ -28,7 +27,7 @@ test.describe.serial("Running e2e fo rest crud api tests", () => {
 
     let response = await apiHelper.post(
       "/public/v2/users",
-      userData,
+      { type: "json", data: userData },
       AUTH_HEADER,
     );
     expect(response.status).toBe(201);
@@ -45,7 +44,7 @@ test.describe.serial("Running e2e fo rest crud api tests", () => {
 
     let response = await apiHelper.put(
       `/public/v2/users/${userId}`,
-      userData,
+      { type: "json", data: userData },
       AUTH_HEADER,
     );
     expect(response.status).toBe(200);
@@ -54,7 +53,7 @@ test.describe.serial("Running e2e fo rest crud api tests", () => {
 
   //DELETE
   test("DELET API - Delet a User", async ({ apiHelper }) => {
-    let response = await apiHelper.put(
+    let response = await apiHelper.delete(
       `/public/v2/users/${userId}`,
       AUTH_HEADER,
     );

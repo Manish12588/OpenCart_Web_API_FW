@@ -41,7 +41,7 @@ test("mock search data api", async ({ page }) => {
   await page.goto(
     "https://abc.com/index.php?route=product/search&search=macbook",
   );
-  await page.pause();
+  //await page.pause();
 });
 
 test("mock search page with fake HTML", async ({ page }) => {
@@ -84,7 +84,7 @@ test("mock search page with fake HTML", async ({ page }) => {
   const prices = await page.locator(".price").allTextContents();
   expect(prices).toEqual(["$599", "$999"]);
 
-  await page.pause();
+  //await page.pause();
 });
 
 test("Negative status 401", async ({ page }) => {
@@ -113,5 +113,5 @@ test("Negative status 401", async ({ page }) => {
   const heading = await page.textContent("h1");
   expect(heading).toBe("Sorry, you are not authorized...");
 
-  await page.pause();
+  //await page.pause();
 });

@@ -9,8 +9,10 @@ type ApiFixtures = {
 
 export let test = baseTest.extend<ApiFixtures>({
   apiHelper: async ({ request }, use) => {
-    let apiHelper = new ApiHelper(request, process.env.API_BASE_URL!);
-    await use(apiHelper);
+    const apiBaseUrl = process.env.API_BASE_URL;
+    if (!apiBaseUrl)
+      throw new Error("API_BASE_URL is not set. Check config/.env.<ENV>");
+    await use(new ApiHelper(request, apiBaseUrl));
   },
 });
 

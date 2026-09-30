@@ -1,4 +1,3 @@
-import { ApiHelper } from "../../src/api/ApiHelper";
 import { test, expect } from "../../src/fixtures/apifixtures";
 
 const TOKEN = process.env.API_TOKEN!;
@@ -19,7 +18,7 @@ async function createUser(apiHelper: any) {
 
   let response = await apiHelper.post(
     "/public/v2/users",
-    userData,
+    { type: "json", data: userData },
     AUTH_HEADER,
   );
   expect(response.status).toBe(201);
@@ -60,9 +59,10 @@ test("Update a user test", async ({ apiHelper }) => {
     name: "apiautomation-update",
     status: "inactive",
   };
+
   let updateResponse = await apiHelper.put(
     `/public/v2/users/${userResponse.id}`,
-    userUpdatedData,
+    { type: "json", data: userUpdatedData },
     AUTH_HEADER,
   );
   expect(updateResponse.status).toBe(200);
