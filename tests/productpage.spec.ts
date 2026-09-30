@@ -6,7 +6,7 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
 });
 
-test("@Smoke Verify the product header - Test", async ({
+test("@smoke Verify the product header - Test", async ({
   homePage,
   searchResultPage,
   productInfoPage,
@@ -17,7 +17,7 @@ test("@Smoke Verify the product header - Test", async ({
   expect(actualProductHeader).toBe("MacBook Pro");
 });
 
-test("@Regression Verify the product images count - Test", async ({
+test("@regression Verify the product images count - Test", async ({
   homePage,
   searchResultPage,
   productInfoPage,
@@ -28,7 +28,7 @@ test("@Regression Verify the product images count - Test", async ({
   expect(actualProductImageCount).toBe(4);
 });
 
-test("@Sanity Verify the product Information", async ({
+test("@sanity Verify the product Information", async ({
   homePage,
   searchResultPage,
   productInfoPage,

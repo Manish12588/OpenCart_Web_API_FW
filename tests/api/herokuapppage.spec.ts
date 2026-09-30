@@ -7,7 +7,7 @@ let userEmail: string;
 let contactIdsList: Array<string> = [];
 
 test.describe.serial("Test User Contacts", () => {
-  test("Add a user - Test", async ({ apiHelper, page }) => {
+  test("@smoke Add a user - Test", async ({ apiHelper, page }) => {
     let user = {
       firstName: "Manish",
       lastName: "Kumar",
@@ -36,7 +36,7 @@ test.describe.serial("Test User Contacts", () => {
     console.log(response.body);
   });
 
-  test("Adding contacts to created user", async ({ apiHelper }) => {
+  test("@regression Adding contacts to created user", async ({ apiHelper }) => {
     for (let i = 0; i < 5; i++) {
       const generatedFirstName = faker.person.firstName();
       const generatedLastName = faker.person.lastName();

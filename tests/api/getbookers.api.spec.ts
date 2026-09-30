@@ -13,7 +13,7 @@ test.describe.serial("Restful Booker -Test ", () => {
   });
 
   //Create booking and store the booking id into varibale
-  test("POST - Create Booking", async ({ apiHelper }) => {
+  test("@regression POST - Create Booking", async ({ apiHelper }) => {
     let userData = {
       firstname: "Manish",
       lastname: "Kumar",

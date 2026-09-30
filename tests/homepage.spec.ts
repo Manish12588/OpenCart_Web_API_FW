@@ -14,7 +14,7 @@ test("Logout Link Exist on HomePage - Test", async ({ homePage }) => {
   expect(await homePage.isLogoutLinkExist()).toBeTruthy();
 });
 
-test("@Sanity Validate the Headers exist on HomePage - Test", async ({
+test("@sanity Validate the Headers exist on HomePage - Test", async ({
   homePage,
 }) => {
   let allHeaders = await homePage.getHomePageHeaders();

@@ -49,7 +49,7 @@ let userArraySchema = {
   items: JSON.parse(fs.readFileSync("./src/schema/userschema.json", "utf-8")),
 };
 
-test("get a user - schema test", async ({ apiHelper }) => {
+test("@sanity get a user - schema test", async ({ apiHelper }) => {
   //User JS Object:
   let userData = {
     name: "manish",

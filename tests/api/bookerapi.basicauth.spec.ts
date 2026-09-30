@@ -38,7 +38,7 @@ async function createBooking(apiHelper: ApiHelper): Promise<number> {
   return response.body.bookingid;
 }
 
-test("Create Booking - Test", async ({ apiHelper }) => {
+test("@smoke Create Booking - Test", async ({ apiHelper }) => {
   let bookingId = await createBooking(apiHelper);
   console.log("Booking Id: ", bookingId);
 });
@@ -51,7 +51,9 @@ test("Get the booking using booking id - Test", async ({ apiHelper }) => {
   console.log(`Booking Details of ${bookingId} :`, response.body);
 });
 
-test("Update the booking using booking id - Test", async ({ apiHelper }) => {
+test("@regression Update the booking using booking id - Test", async ({
+  apiHelper,
+}) => {
   let bookingId = await createBooking(apiHelper);
   let updatedUserData = {
     firstname: "Manish",
@@ -83,7 +85,7 @@ test("Update the booking using booking id - Test", async ({ apiHelper }) => {
   );
 });
 
-test("Update booking partially using booking id - Test", async ({
+test("@regression Update booking partially using booking id - Test", async ({
   apiHelper,
 }) => {
   let bookingId = await createBooking(apiHelper);

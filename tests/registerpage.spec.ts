@@ -11,7 +11,7 @@ test("Validate the Register Page title - Test", async ({ registerPage }) => {
 });
 
 //Register user by providing the hard code data in test
-test("@Regression Register Account - Test", async ({
+test("@regression Register Account - Test", async ({
   loginPage,
   registerPage,
   accountPage,

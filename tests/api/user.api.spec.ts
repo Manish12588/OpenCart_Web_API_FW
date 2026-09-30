@@ -8,7 +8,7 @@ let userId: number;
 
 //describe = Test Suite
 //Serial = Run in seq mode
-test.describe.serial("Running e2e fo rest crud api tests", () => {
+test.describe.serial("@regression Running e2e fo rest crud api tests", () => {
   //GET Test
   test("GET API - get all users", async ({ apiHelper }) => {
     let response = await apiHelper.get("/public/v2/users", AUTH_HEADER);

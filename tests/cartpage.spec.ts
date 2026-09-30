@@ -6,7 +6,7 @@ test.beforeEach(async ({ loginPage }) => {
   await loginPage.doLogin(process.env.APP_USERNAME!, process.env.APP_PASSWORD!);
 });
 
-test("@Sanity Validate the Cart Page title - Test", async ({
+test("@sanity Validate the Cart Page title - Test", async ({
   productInfoPage,
   cartPage,
 }) => {
@@ -14,7 +14,7 @@ test("@Sanity Validate the Cart Page title - Test", async ({
   expect(await cartPage.getCartPageTitle()).toBe("Shopping Cart");
 });
 
-test("@Regression Validate the product quantity in shopping cart - Test", async ({
+test("@regression Validate the product quantity in shopping cart - Test", async ({
   homePage,
   searchResultPage,
   productInfoPage,
