@@ -14,7 +14,7 @@ test("@sanity Validate the Cart Page title - Test", async ({
   expect(await cartPage.getCartPageTitle()).toBe("Shopping Cart");
 });
 
-test("@regression Validate the product quantity in shopping cart - Test", async ({
+test("Validate the product quantity in shopping cart - Test", async ({
   homePage,
   searchResultPage,
   productInfoPage,

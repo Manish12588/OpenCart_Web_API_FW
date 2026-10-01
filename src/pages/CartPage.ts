@@ -42,4 +42,6 @@ export class CartPage extends BasePage {
       .last()
       .click();
   }
+
+  
 }
