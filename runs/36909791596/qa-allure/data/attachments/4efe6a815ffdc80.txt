@@ -1,0 +1,11 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/contacts
+Contact Marcellus.Veum created at 0 index, with _id : 6abeabe0b842660015c06b0c
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/contacts
+Contact Francisca.Leuschke created at 1 index, with _id : 6abeabe0b842660015c06b0d
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/contacts
+Contact Wilhelmine.Herzog created at 2 index, with _id : 6abeabe0b842660015c06b0e
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/contacts
+Contact Laurine.Cronin created at 3 index, with _id : 6abeabe0b842660015c06b0f
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/contacts
+Contact Lela.Mosciski-Moore created at 4 index, with _id : 6abeabe0f46ae400159ba417
