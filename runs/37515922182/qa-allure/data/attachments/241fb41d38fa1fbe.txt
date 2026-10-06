@@ -1,0 +1,4 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://gorest.co.in//public/v2/users/8654127
+https://gorest.co.in//public/v2/users/8654127
+Resolved URL: https://gorest.co.in//public/v2/users/8654127

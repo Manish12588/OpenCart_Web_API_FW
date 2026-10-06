@@ -1,0 +1,3 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/users
+User Email:  manish_1791313397278@test.com
