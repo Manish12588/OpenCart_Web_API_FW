@@ -109,7 +109,7 @@ pipeline {
                     sh 'rm -rf allure-results reports reporting-labs'
                     withCredentials([
                         usernamePassword(credentialsId: 'dev-credentials',
-                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
+                            usernameVariable: 'APP_USERNAME', passwordVariable: 'APP_PASSWORD'),
                         string(credentialsId: 'api-token', variable: 'API_TOKEN'),
                         string(credentialsId: 'oauth-client-id', variable: 'OAUTH_CLIENT_ID'),
                         string(credentialsId: 'oauth-client-secret', variable: 'OAUTH_CLIENT_SECRET'),
@@ -122,8 +122,8 @@ pipeline {
                         sh '''
                             ENV=dev \
                             BASE_URL=$BASE_URL \
-                            USERNAME=$USERNAME \
-                            PASSWORD=$PASSWORD \
+                            APP_USERNAME=$APP_USERNAME \
+                            APP_PASSWORD=$APP_PASSWORD \
                             API_BASE_URL=$API_BASE_URL \
                             API_TOKEN=$API_TOKEN \
                             OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID \
@@ -189,7 +189,7 @@ pipeline {
                     sh 'rm -rf allure-results reports reporting-labs'
                     withCredentials([
                         usernamePassword(credentialsId: 'qa-credentials',
-                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
+                            usernameVariable: 'APP_USERNAME', passwordVariable: 'APP_PASSWORD'),
                         string(credentialsId: 'api-token', variable: 'API_TOKEN'),
                         string(credentialsId: 'oauth-client-id', variable: 'OAUTH_CLIENT_ID'),
                         string(credentialsId: 'oauth-client-secret', variable: 'OAUTH_CLIENT_SECRET'),
@@ -202,8 +202,8 @@ pipeline {
                         sh '''
                             ENV=qa \
                             BASE_URL=$BASE_URL \
-                            USERNAME=$USERNAME \
-                            PASSWORD=$PASSWORD \
+                            APP_USERNAME=$APP_USERNAME \
+                            APP_PASSWORD=$APP_PASSWORD \
                             API_BASE_URL=$API_BASE_URL \
                             API_TOKEN=$API_TOKEN \
                             OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID \
@@ -269,7 +269,7 @@ pipeline {
                     sh 'rm -rf allure-results reports reporting-labs'
                     withCredentials([
                         usernamePassword(credentialsId: 'stage-credentials',
-                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
+                            usernameVariable: 'APP_USERNAME', passwordVariable: 'APP_PASSWORD'),
                         string(credentialsId: 'api-token', variable: 'API_TOKEN'),
                         string(credentialsId: 'oauth-client-id', variable: 'OAUTH_CLIENT_ID'),
                         string(credentialsId: 'oauth-client-secret', variable: 'OAUTH_CLIENT_SECRET'),
@@ -282,8 +282,8 @@ pipeline {
                         sh '''
                             ENV=stage \
                             BASE_URL=$BASE_URL \
-                            USERNAME=$USERNAME \
-                            PASSWORD=$PASSWORD \
+                            APP_USERNAME=$APP_USERNAME \
+                            APP_PASSWORD=$APP_PASSWORD \
                             API_BASE_URL=$API_BASE_URL \
                             API_TOKEN=$API_TOKEN \
                             OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID \
@@ -357,7 +357,7 @@ pipeline {
                     sh 'rm -rf allure-results reports reporting-labs'
                     withCredentials([
                         usernamePassword(credentialsId: 'prod-credentials',
-                            usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
+                            usernameVariable: 'APP_USERNAME', passwordVariable: 'APP_PASSWORD'),
                         string(credentialsId: 'api-token', variable: 'API_TOKEN'),
                         string(credentialsId: 'oauth-client-id', variable: 'OAUTH_CLIENT_ID'),
                         string(credentialsId: 'oauth-client-secret', variable: 'OAUTH_CLIENT_SECRET'),
@@ -370,8 +370,8 @@ pipeline {
                         sh '''
                             ENV=prod \
                             BASE_URL=$BASE_URL \
-                            USERNAME=$USERNAME \
-                            PASSWORD=$PASSWORD \
+                            APP_USERNAME=$USERNAME \
+                            APP_PASSWORD=$PASSWORD \
                             API_BASE_URL=$API_BASE_URL \
                             API_TOKEN=$API_TOKEN \
                             OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID \
