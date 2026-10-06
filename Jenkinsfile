@@ -370,8 +370,8 @@ pipeline {
                         sh '''
                             ENV=prod \
                             BASE_URL=$BASE_URL \
-                            APP_USERNAME=$USERNAME \
-                            APP_PASSWORD=$PASSWORD \
+                            APP_USERNAME=$APP_USERNAME \
+                            APP_PASSWORD=$APP_PASSWORD \
                             API_BASE_URL=$API_BASE_URL \
                             API_TOKEN=$API_TOKEN \
                             OAUTH_CLIENT_ID=$OAUTH_CLIENT_ID \
