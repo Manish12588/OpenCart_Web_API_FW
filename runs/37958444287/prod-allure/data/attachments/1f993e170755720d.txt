@@ -1,0 +1,9 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://thinking-tester-contact-list.herokuapp.com/users/me
+{
+  _id: '6ac9158a4d2ee40015bc78f5',
+  firstName: 'Manish',
+  lastName: 'Kumar',
+  email: 'manish_1791563146221@test.com',
+  __v: 1
+}
