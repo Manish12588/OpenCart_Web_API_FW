@@ -1,0 +1,3 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://restful-booker.herokuapp.com/auth
+Generated Token:  59a3c1aab8729a6

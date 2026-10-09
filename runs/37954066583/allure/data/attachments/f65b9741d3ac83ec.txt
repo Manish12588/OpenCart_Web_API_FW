@@ -1,0 +1,4 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://restful-booker.herokuapp.com/booking/2667
+https://restful-booker.herokuapp.com/booking/2667
+Resolved URL: https://restful-booker.herokuapp.com/booking/2667
