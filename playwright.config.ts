@@ -22,7 +22,7 @@ export default defineConfig({
   reporter: process.env.CI
     ? //pipeline
       [
-        ["list"],
+        ["blob"],
         ["html", { outputFolder: "reports/html-report", open: "never" }],
         [
           "allure-playwright",
@@ -32,6 +32,7 @@ export default defineConfig({
       ]
     : //Local
       [
+        ["blob", { outputFolder: "blob-report" }],
         ["list"],
         ["html", { outputFolder: "reports/html-report", open: "never" }],
         [
