@@ -1,0 +1,4 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://restful-booker.herokuapp.com/auth
+Resolved URL: https://restful-booker.herokuapp.com/booking
+Booking Id:  896

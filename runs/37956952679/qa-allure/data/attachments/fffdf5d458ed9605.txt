@@ -1,0 +1,13 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://restful-booker.herokuapp.com/auth
+Resolved URL: https://restful-booker.herokuapp.com/booking
+Resolved URL: https://restful-booker.herokuapp.com/booking/1557
+Resolved URL: https://restful-booker.herokuapp.com/booking/1557
+Booking details of 1557 after update : {
+  firstname: 'Manish',
+  lastname: 'Kumar',
+  totalprice: 1200,
+  depositpaid: true,
+  bookingdates: { checkin: '2026-09-15', checkout: '2026-09-20' },
+  additionalneeds: 'Dinner'
+}
