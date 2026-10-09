@@ -755,7 +755,7 @@ jobs:
                     {
                       "type": "button",
                       "text": { "type": "plain_text", "text": "📁 GitHub Actions" },
-                      "url": "https://Manish12588.github.io/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      "url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     }
                   ]
                 }
