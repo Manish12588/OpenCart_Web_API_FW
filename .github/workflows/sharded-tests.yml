@@ -195,7 +195,7 @@ jobs:
       cancel-in-progress: false
     env:
       RUN_DIR: pages-deploy/runs/${{ github.run_id }}
-      REPORT_URL: https://github.com/Manish12588/OpenCart_Web_API_FW/runs/${{ github.run_id }}
+      REPORT_URL: https://manish12588.github.io/OpenCart_Web_API_FW/runs/${{ github.run_id }}
     steps:
       - name: Download merged reports
         uses: actions/download-artifact@v4
