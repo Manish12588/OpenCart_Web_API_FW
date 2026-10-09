@@ -1,0 +1,14 @@
+baseURL received: https://gorest.co.in/
+Resolved URL: https://restful-booker.herokuapp.com/booking
+Response:  {
+  bookingid: 4086,
+  booking: {
+    firstname: 'Manish',
+    lastname: 'Kumar',
+    totalprice: 1000,
+    depositpaid: true,
+    bookingdates: { checkin: '2026-09-15', checkout: '2026-09-20' },
+    additionalneeds: 'Breakfast'
+  }
+}
+Generated Booking ID:  4086

@@ -1,0 +1,72 @@
+Response [
+  {
+    id: 8660328,
+    name: 'manish',
+    email: 'pwautomation_1791561529769@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660326,
+    name: 'apiautomation-update',
+    email: 'apiautomation_1791561527362@open.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 8660325,
+    name: 'apiautomation',
+    email: 'apiautomation_1791561527239@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660310,
+    name: 'Manish',
+    email: 'automation_1791560755786@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660308,
+    name: 'manish',
+    email: 'pwautomation_1791560753995@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660307,
+    name: 'apiautomation-update',
+    email: 'apiautomation_1791560752355@open.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 8660305,
+    name: 'apiautomation',
+    email: 'apiautomation_1791560751011@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660257,
+    name: 'Manish',
+    email: 'automation_1791558912637@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660255,
+    name: 'manish',
+    email: 'pwautomation_1791558910609@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8660253,
+    name: 'apiautomation-update',
+    email: 'apiautomation_1791558908855@open.com',
+    gender: 'male',
+    status: 'inactive'
+  }
+]
